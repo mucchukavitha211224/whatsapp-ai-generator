@@ -324,8 +324,11 @@ using modern technologies and responsive UI design.
 👨‍💻 Author
 Internship Project Submission
 AI WhatsApp Website Generator 🚀
-## Demo Video
-## Demo Video
+# 🎥 Demo Video
 
-https://1drv.ms/v/c/30cc374d43cb4b11/IQAzQNEOrgG7R7uyJjOufTM1AexueY5BINWXYIJ5NadScNo?e=LPJJXd
+## Watch Full Project Demo
+
+https://drive.google.com/file/d/1vXoHkwqueTr1yJa-zsd2n8XWvcN2L-YE/view?usp=drive_link
+
+
 
