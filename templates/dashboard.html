@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp AI Web Generator - Console</title>
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glow-indigo {
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans selection:bg-indigo-500/30 selection:text-white min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="border-b border-slate-900 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-violet-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/20">
+                    <i data-lucide="cpu" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h1 class="font-display font-bold text-lg leading-none">WA-GEN</h1>
+                    <span class="text-[10px] font-mono text-slate-500">AI Web Generator Console v1.0</span>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-xs font-semibold text-emerald-400 border border-emerald-500/20">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span> Live Web Server
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-6 py-12 space-y-12">
+        
+        <!-- Welcome Header -->
+        <div class="space-y-4">
+            <h2 class="text-4xl md:text-5xl font-display font-extrabold text-white tracking-tight leading-none bg-gradient-to-r from-white via-slate-300 to-slate-500 bg-clip-text text-transparent">
+                WhatsApp AI Website Generator
+            </h2>
+            <p class="text-slate-400 max-w-3xl leading-relaxed">
+                Welcome to your developer workspace. Use this visual cockpit to monitor environment status, audit prompt requirements, test codebases, and preview generated static templates before deploying.
+            </p>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div class="grid md:grid-cols-3 gap-8">
+            
+            <!-- Left Side: Config Diagnostics (Span 1) -->
+            <div class="space-y-8 md:col-span-1">
+                
+                <!-- Credentials Diagnostic Cards -->
+                <div class="glass p-6 rounded-2xl glow-indigo space-y-6">
+                    <h3 class="font-display text-lg font-bold text-white flex items-center gap-2">
+                        <i data-lucide="shield-check" class="text-indigo-400 w-5 h-5"></i> System Diagnosis
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <!-- Groq Status -->
+                        <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/40 border border-slate-900">
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="brain-circuit" class="w-5 h-5 text-slate-400"></i>
+                                <span class="text-sm font-semibold">Groq Llama 3</span>
+                            </div>
+                            {% if groq_active %}
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Active</span>
+                            {% else %}
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20" title="Will utilize local keyword fallback parsing.">Fallback</span>
+                            {% endif %}
+                        </div>
+
+                        <!-- Twilio Status -->
+                        <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/40 border border-slate-900">
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="message-square" class="w-5 h-5 text-slate-400"></i>
+                                <span class="text-sm font-semibold">Twilio Sandbox</span>
+                            </div>
+                            {% if twilio_active %}
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Active</span>
+                            {% else %}
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-500/10 text-slate-400 border border-slate-900" title="Set credentials to receive messages from WhatsApp.">Inactive</span>
+                            {% endif %}
+                        </div>
+
+                        <!-- Netlify Status -->
+                        <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/40 border border-slate-900">
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="globe" class="w-5 h-5 text-slate-400"></i>
+                                <span class="text-sm font-semibold">Netlify Deploy</span>
+                            </div>
+                            {% if netlify_active %}
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Active</span>
+                            {% else %}
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20" title="Will run in simulated sandbox mode.">Sandbox</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ngrok Instructions Guide -->
+                <div class="glass p-6 rounded-2xl space-y-6">
+                    <h3 class="font-display text-lg font-bold text-white flex items-center gap-2">
+                        <i data-lucide="link" class="text-indigo-400 w-5 h-5"></i> Twilio Webhook Setup
+                    </h3>
+                    <div class="space-y-4 text-xs text-slate-400 leading-relaxed">
+                        <p>To wire up the Twilio WhatsApp Sandbox to your local machine, run Ngrok in your terminal:</p>
+                        <div class="bg-slate-950 p-3 rounded-lg border border-slate-900 font-mono text-slate-300 select-all">
+                            ngrok http 5000
+                        </div>
+                        <p>Copy the generated HTTPS URL, append <code class="text-indigo-400">/webhook</code> to the end, and paste it into the **Twilio Sandbox Settings** on Twilio Console:</p>
+                        <div class="bg-slate-950 p-3 rounded-lg border border-slate-900 font-mono text-[10px] text-slate-300">
+                            https://your-id.ngrok-free.app/webhook
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Side: Generator Form & Testing Cockpit (Span 2) -->
+            <div class="space-y-8 md:col-span-2">
+                
+                <!-- Manual Generator Form -->
+                <div class="glass p-8 rounded-2xl glow-indigo space-y-6">
+                    <h3 class="font-display text-xl font-bold text-white flex items-center gap-2">
+                        <i data-lucide="sparkles" class="text-indigo-400 w-5.5 h-5.5"></i> Test Prompter Engine
+                    </h3>
+                    <p class="text-slate-400 text-sm">
+                        Test the generation pipeline instantly without sending a WhatsApp message. Write a prompt describing a business and trigger the generator.
+                    </p>
+                    
+                    <form action="/generate-test" method="POST" class="space-y-6">
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono">Sample Prompts (Click to use)</label>
+                            <div class="flex flex-wrap gap-2">
+                                <button type="button" onclick="setPrompt('A rustic Italian pizzeria called Pizza Bella in NYC, offering wood-fired oven pizzas and catering services.')" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-400 hover:text-white hover:border-slate-700 transition">🍕 Restaurant</button>
+                                <button type="button" onclick="setPrompt('A cozy French pastry and cake shop called Le Croissant in Paris, offering fresh sourdough bread, organic macarons, and custom birthday cakes.')" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-400 hover:text-white hover:border-slate-700 transition">🥐 Bakery</button>
+                                <button type="button" onclick="setPrompt('A minimalist developer portfolio for James Carter, a fullstack coder specializing in AI agents, Python, and React, based in San Francisco.')" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-400 hover:text-white hover:border-slate-700 transition">💻 Portfolio</button>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="prompt_text" class="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono">Your Descriptive Website Prompt</label>
+                            <textarea id="prompt_text" name="prompt" rows="4" required placeholder="Type your prompt here..." class="w-full bg-slate-950 border border-slate-900 rounded-xl px-4 py-3.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition-colors font-medium"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-600 hover:to-violet-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-2 transform active:scale-[0.99] transition">
+                            <i data-lucide="play" class="w-4 h-4"></i> Generate & Deploy Web Page
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Generation Success Result Box (Conditional) -->
+                {% if test_result %}
+                <div class="p-8 rounded-2xl bg-slate-900/60 border border-indigo-500/30 space-y-6 animate-fade-in">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-9 h-9 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+                                <i data-lucide="check" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Website Created Successfully!</h4>
+                                <p class="text-xs text-slate-500">Pipeline executed in offline/online mode</p>
+                            </div>
+                        </div>
+                        <span class="text-xs font-mono px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 uppercase tracking-widest font-semibold">
+                            {{ test_result.template_type }}
+                        </span>
+                    </div>
+
+                    <!-- Meta specs details -->
+                    <div class="grid grid-cols-2 gap-6 text-sm">
+                        <div>
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1">Business Name</span>
+                            <p class="text-white font-bold">{{ test_result.business_name }}</p>
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1">Theme Accent</span>
+                            <p class="text-white font-bold flex items-center gap-1.5 uppercase font-mono text-xs">
+                                <span class="w-2.5 h-2.5 rounded-full bg-{{ test_result.theme_color }}-500 inline-block"></span>
+                                {{ test_result.theme_color }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-900 space-y-4">
+                        <div class="space-y-1">
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block">Live Deployed URL</span>
+                            <a href="{{ test_result.deployed_url }}" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-bold break-all flex items-center gap-2 group text-base">
+                                {{ test_result.deployed_url }}
+                                <i data-lucide="external-link" class="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between text-xs text-slate-500">
+                        <span>A backup HTML file has been written to <code class="text-indigo-400 font-mono">/outputs/</code>.</span>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-900 bg-slate-950/40 py-12 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 WhatsApp AI Website Generator Console. Open-source MIT License.</p>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+
+        function setPrompt(text) {
+            document.getElementById('prompt_text').value = text;
+        }
+    </script>
+</body>
+</html>

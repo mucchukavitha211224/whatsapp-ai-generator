@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon For - Capturing Moments, Creating Art</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: 'hsl(var(--primary-color))',
+            'primary-hover': 'hsl(var(--primary-hover))',
+            secondary: 'hsl(var(--secondary-color))'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
+    :root {
+      --primary-color: 220 90% 56%;
+      --primary-hover: 220 90% 46%;
+      --primary-rgb: 59, 130, 246;
+      --secondary-color: 220 15% 10%;
+    }
+    body { font-family: "Plus Jakarta Sans", sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: "Plus Jakarta Sans", sans-serif; }
+    
+          body {
+            background-color: #050508;
+            color: #e2e8f0;
+          }
+          .neon-glow {
+            box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.35);
+            border: 1px solid rgba(var(--primary-rgb), 0.5);
+          }
+          .neon-glow:hover {
+            box-shadow: 0 0 25px rgba(var(--primary-rgb), 0.6);
+          }
+          .neon-text {
+            text-shadow: 0 0 8px rgba(var(--primary-rgb), 0.5);
+          }
+          .neon-btn {
+            border: 2px solid rgba(var(--primary-rgb), 1);
+            box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.3);
+            transition: all 0.3s ease;
+          }
+          .neon-btn:hover {
+            background: rgba(var(--primary-rgb), 1);
+            color: #000;
+          }
+        
+  </style>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-[#040406] text-slate-300 scroll-smooth antialiased">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-900">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="text-2xl font-extrabold flex items-center gap-2">
+        <span class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white text-base">
+          <i data-lucide="layers" class="w-4 h-4"></i>
+        </span>
+        Neon For
+      </a>
+      <div class="hidden md:flex items-center gap-8 font-semibold">
+        <a href="#about" class="hover:text-primary transition-colors text-sm opacity-80">About</a>
+        <a href="#services" class="hover:text-primary transition-colors text-sm opacity-80">Services</a>
+        <a href="#gallery" class="hover:text-primary transition-colors text-sm opacity-80">Gallery</a>
+        <a href="#contact" class="hover:text-primary transition-colors text-sm opacity-80">Contact</a>
+      </div>
+      <div>
+        <a href="#contact" class="neon-btn px-6 py-3 rounded-md font-bold inline-block text-center text-white text-sm">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="relative pt-36 pb-24 overflow-hidden min-h-screen flex items-center">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+      <div>
+        <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold mb-6 tracking-wide uppercase">
+          AI Generated Experience
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+          Hi, I'm Neon For
+        </h1>
+        <p class="text-lg opacity-85 leading-relaxed mb-8 max-w-xl">
+          Visual Artist, Photographer, and Digital Designer pushing the boundaries of aesthetics.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center gap-4">
+          <a href="#contact" class="neon-btn px-6 py-3 rounded-md font-bold inline-block text-center text-white">Explore Gallery</a>
+          <a href="#services" class="px-6 py-3 rounded-full font-semibold border border-current opacity-70 hover:opacity-100 flex items-center justify-center gap-2">
+            Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="relative overflow-hidden rounded-2xl shadow-2xl">
+          <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=800&q=80" alt="Hero" class="w-full aspect-[4/3] object-cover" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="py-24 border-t border-slate-100 dark:border-slate-900/50">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+      <div class="order-2 md:order-1">
+        <div class="relative overflow-hidden rounded-2xl shadow-xl">
+          <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80" alt="About" class="w-full h-[450px] object-cover" />
+        </div>
+      </div>
+      <div class="order-1 md:order-2">
+        <span class="text-primary font-bold tracking-wider uppercase text-sm block mb-3">About Me</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-6">Who We Are & What We Believe</h2>
+        <p class="text-lg leading-relaxed opacity-80 mb-8">I am Neon For, a seasoned creative designer specialized in capturing authentic human emotions, dramatic natural landscapes, and high-converting commercial designs.</p>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+            <i data-lucide="check" class="w-3.5 h-3.5"></i>
+          </span>
+          <span class="font-medium text-sm leading-snug">5+ Years Experience</span>
+        </li>
+        
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+            <i data-lucide="check" class="w-3.5 h-3.5"></i>
+          </span>
+          <span class="font-medium text-sm leading-snug">Published in Design Journals</span>
+        </li>
+        
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+            <i data-lucide="check" class="w-3.5 h-3.5"></i>
+          </span>
+          <span class="font-medium text-sm leading-snug">Visual Storytelling Focus</span>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="py-24 bg-slate-100/50 dark:bg-slate-900/20 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-primary font-bold tracking-wider uppercase text-sm block mb-3">Our Offerings</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Handcrafted Selections</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-slate-950/80 border border-slate-900 neon-glow p-6 rounded-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="flex items-center justify-between mb-4">
+            <div class="p-3 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+              <i data-lucide="camera" class="w-6 h-6"></i>
+            </div>
+            <span class="font-bold text-lg text-primary">Starts at $800</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Commercial Brand Shoots</h3>
+          <p class="text-sm leading-relaxed opacity-75">Crafting high-quality visual campaigns for premium fashion labels.</p>
+        </div>
+        
+        <div class="bg-slate-950/80 border border-slate-900 neon-glow p-6 rounded-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="flex items-center justify-between mb-4">
+            <div class="p-3 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+              <i data-lucide="palette" class="w-6 h-6"></i>
+            </div>
+            <span class="font-bold text-lg text-primary">Starts at $1500</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Digital Art Direction</h3>
+          <p class="text-sm leading-relaxed opacity-75">Full aesthetic consulting, UI/UX concept sketching.</p>
+        </div>
+        
+        <div class="bg-slate-950/80 border border-slate-900 neon-glow p-6 rounded-xl transition-all duration-300 hover:-translate-y-1">
+          <div class="flex items-center justify-between mb-4">
+            <div class="p-3 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+              <i data-lucide="video" class="w-6 h-6"></i>
+            </div>
+            <span class="font-bold text-lg text-primary">Starts at $600</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Cinematic Video Editing</h3>
+          <p class="text-sm leading-relaxed opacity-75">Post-production, atmospheric color-grading, narrative cuts.</p>
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="py-24 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-primary font-bold tracking-wider uppercase text-sm block mb-3">Portfolio</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Visual Aesthetics</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="overflow-hidden group rounded-xl relative ">
+          <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=800&q=80" alt="Item 0" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+            <p class="text-white font-medium capitalize text-sm flex items-center gap-2">
+              <i data-lucide="eye" class="w-4 h-4"></i> View Photo
+            </p>
+          </div>
+        </div>
+        
+        <div class="overflow-hidden group rounded-xl relative ">
+          <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80" alt="Item 1" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+            <p class="text-white font-medium capitalize text-sm flex items-center gap-2">
+              <i data-lucide="eye" class="w-4 h-4"></i> View Photo
+            </p>
+          </div>
+        </div>
+        
+        <div class="overflow-hidden group rounded-xl relative ">
+          <img src="https://images.unsplash.com/photo-1493612276216-ee3925520721?auto=format&fit=crop&w=800&q=80" alt="Item 2" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+            <p class="text-white font-medium capitalize text-sm flex items-center gap-2">
+              <i data-lucide="eye" class="w-4 h-4"></i> View Photo
+            </p>
+          </div>
+        </div>
+        
+        <div class="overflow-hidden group rounded-xl relative ">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80" alt="Item 3" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+            <p class="text-white font-medium capitalize text-sm flex items-center gap-2">
+              <i data-lucide="eye" class="w-4 h-4"></i> View Photo
+            </p>
+          </div>
+        </div>
+        
+        <div class="overflow-hidden group rounded-xl relative ">
+          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?auto=format&fit=crop&w=800&q=80" alt="Item 4" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+            <p class="text-white font-medium capitalize text-sm flex items-center gap-2">
+              <i data-lucide="eye" class="w-4 h-4"></i> View Photo
+            </p>
+          </div>
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-24 bg-slate-100/50 dark:bg-slate-900/20 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+      <div>
+        <span class="text-primary font-bold tracking-wider uppercase text-sm block mb-3">Connect With Us</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-6">Get in Touch Today</h2>
+        <div class="space-y-6">
+          <div class="flex items-center gap-4">
+            <span class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center"><i data-lucide="mail"></i></span>
+            <div>
+              <p class="text-xs uppercase opacity-60">Email Us</p>
+              <a href="mailto:hello@neonfor.design" class="font-bold">hello@neonfor.design</a>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center"><i data-lucide="phone"></i></span>
+            <div>
+              <p class="text-xs uppercase opacity-60">Call Support</p>
+              <a href="tel:+1 (555) 789-1234" class="font-bold">+1 (555) 789-1234</a>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center"><i data-lucide="map-pin"></i></span>
+            <div>
+              <p class="text-xs uppercase opacity-60">Visit Us</p>
+              <p class="font-bold">SOHO Art Center, Studio 9B, New York, NY 10012</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-950/80 border border-slate-900 neon-glow p-6 rounded-xl transition-all duration-300 hover:-translate-y-1">
+        <h3 class="text-2xl font-bold mb-6">Send Message</h3>
+        <form onsubmit="event.preventDefault(); alert('Message successfully transmitted!')" class="space-y-4">
+          <input type="text" placeholder="Full Name" required class="w-full bg-slate-50 dark:bg-slate-900 border rounded-lg px-4 py-2 text-sm outline-none" />
+          <input type="email" placeholder="Email Address" required class="w-full bg-slate-50 dark:bg-slate-900 border rounded-lg px-4 py-2 text-sm outline-none" />
+          <textarea placeholder="Your Message" required rows="4" class="w-full bg-slate-50 dark:bg-slate-900 border rounded-lg px-4 py-2 text-sm outline-none"></textarea>
+          <button type="submit" class="w-full neon-btn px-6 py-3 rounded-md font-bold inline-block text-center text-white">Submit Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-12 border-t border-slate-100 dark:border-slate-900/50 text-center text-sm opacity-75">
+    <p>&copy; 2026 Neon For. Powered by ElevateBox.</p>
+  </footer>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

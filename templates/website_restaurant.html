@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ business_name }} - Culinary Experience</title>
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glow-hover:hover {
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-stone-950 text-stone-100 font-sans selection:bg-orange-500 selection:text-white">
+
+    <!-- Header Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-stone-950/80 backdrop-blur-md border-b border-stone-800/50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-2">
+                <i data-lucide="utensils-cross" class="w-7 h-7 text-{{ theme_color }}-500 animate-pulse"></i>
+                <span class="font-serif font-bold text-xl tracking-wide bg-gradient-to-r from-white to-stone-400 bg-clip-text text-transparent">
+                    {{ business_name }}
+                </span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide text-stone-400">
+                <a href="#about" class="hover:text-white transition-colors duration-200">Our Story</a>
+                <a href="#services" class="hover:text-white transition-colors duration-200">The Menu</a>
+                <a href="#contact" class="hover:text-white transition-colors duration-200">Reservations</a>
+            </nav>
+            <a href="#contact" class="bg-{{ theme_color }}-600 hover:bg-{{ theme_color }}-700 text-white font-medium px-5 py-2 rounded-full text-sm transition-all duration-300 transform hover:scale-105 shadow-lg shadow-{{ theme_color }}-600/20">
+                {{ cta_text }}
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
+        <!-- Abstract Glow Background -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-{{ theme_color }}-600/10 rounded-full filter blur-[80px]"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-stone-800/20 rounded-full filter blur-[100px]"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-stone-900/50 via-stone-950 to-stone-950"></div>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-6 relative z-10 text-center">
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-stone-800 bg-stone-900/50 text-xs font-semibold uppercase tracking-widest text-{{ theme_color }}-400 mb-8 animate-fade-in">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Fine Dining & Culinary Art
+            </span>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-6 leading-tight">
+                {{ hero_headline }}
+            </h1>
+            <p class="max-w-2xl mx-auto text-stone-400 text-base md:text-lg lg:text-xl leading-relaxed mb-12">
+                {{ hero_subheadline }}
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#contact" class="w-full sm:w-auto bg-{{ theme_color }}-600 hover:bg-{{ theme_color }}-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-xl shadow-{{ theme_color }}-600/30 text-center">
+                    {{ cta_text }}
+                </a>
+                <a href="#services" class="w-full sm:w-auto bg-stone-900 hover:bg-stone-800 text-stone-300 font-semibold px-8 py-4 rounded-full border border-stone-800 transition-all duration-300 text-center">
+                    Explore Our Menu
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 border-t border-stone-900 bg-stone-950/40 relative">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div class="space-y-6">
+                <span class="text-xs font-semibold uppercase tracking-widest text-{{ theme_color }}-500">{{ about_title }}</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white leading-tight">
+                    Crafting memories one plate at a time.
+                </h2>
+                <p class="text-stone-400 text-lg leading-relaxed">
+                    {{ about_text }}
+                </p>
+                <div class="grid grid-cols-2 gap-6 pt-4">
+                    <div class="p-5 rounded-2xl bg-stone-900/40 border border-stone-800/40">
+                        <h4 class="text-3xl font-bold text-white font-serif mb-2">100%</h4>
+                        <p class="text-xs text-stone-500 uppercase tracking-wider">Organic Produce</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-stone-900/40 border border-stone-800/40">
+                        <h4 class="text-3xl font-bold text-white font-serif mb-2">Master</h4>
+                        <p class="text-xs text-stone-500 uppercase tracking-wider">Michelin-Trained Chefs</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Graphic Element Mockup (Instead of missing images) -->
+            <div class="relative group">
+                <div class="absolute inset-0 bg-gradient-to-tr from-{{ theme_color }}-600 to-amber-500 rounded-3xl opacity-20 filter blur-xl group-hover:opacity-30 transition-all duration-500"></div>
+                <div class="relative bg-stone-900 border border-stone-800 p-8 rounded-3xl shadow-2xl overflow-hidden aspect-[4/3] flex flex-col justify-between">
+                    <div class="flex items-center justify-between">
+                        <i data-lucide="chef-hat" class="w-12 h-12 text-{{ theme_color }}-500"></i>
+                        <span class="text-xs font-mono text-stone-500 bg-stone-950 px-3 py-1 rounded-full">Est. 2018</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="h-2 w-1/4 bg-{{ theme_color }}-500/20 rounded-full"></div>
+                        <h3 class="font-serif text-3xl font-bold text-white leading-tight">
+                            Fresh ingredients, traditional techniques.
+                        </h3>
+                        <p class="text-sm text-stone-400">
+                            Our team harvests herbs, buys fresh local meats daily, and carefully controls every step.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Menu Section -->
+    <section id="services" class="py-24 border-t border-stone-900 bg-stone-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-semibold uppercase tracking-widest text-{{ theme_color }}-500">The Culinary Selection</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white">Featured Offerings</h2>
+                <p class="text-stone-400">Each dish represents weeks of conceptualization, pairing, and tasting to bring only the finest flavors to your table.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                {% for service in services %}
+                <div class="group p-8 rounded-3xl bg-stone-900/30 border border-stone-850 hover:border-stone-800 transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between glow-hover">
+                    <div class="space-y-6">
+                        <div class="w-12 h-12 rounded-2xl bg-{{ theme_color }}-500/10 flex items-center justify-center text-{{ theme_color }}-500 border border-{{ theme_color }}-500/20">
+                            <i data-lucide="{{ service.icon or 'utensils' }}" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-white group-hover:text-{{ theme_color }}-400 transition-colors duration-200">
+                            {{ service.title }}
+                        </h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">
+                            {{ service.description }}
+                        </p>
+                    </div>
+                    <div class="pt-8 border-t border-stone-900 mt-6 flex items-center justify-between text-xs font-mono text-stone-500">
+                        <span>Premium Quality</span>
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-stone-600 group-hover:text-{{ theme_color }}-500 transition-colors duration-300"></i>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-24 border-t border-stone-900 bg-stone-950/20">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <i data-lucide="quote" class="w-12 h-12 text-{{ theme_color }}-500/30 mx-auto mb-8"></i>
+            <p class="font-serif text-2xl md:text-3xl italic text-stone-200 leading-relaxed mb-8">
+                "An absolute masterpieces of gastronomy! The atmosphere matches the stellar food. The attention to detail is outstanding, and we will certainly be returning for all our anniversaries."
+            </p>
+            <div class="flex items-center justify-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-{{ theme_color }}-600/30 flex items-center justify-center font-bold text-sm text-{{ theme_color }}-400">
+                    EG
+                </div>
+                <div class="text-left">
+                    <h5 class="text-sm font-bold text-white">Eleanor G.</h5>
+                    <p class="text-xs text-stone-500">Michelin Food Critic</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Reservation Section -->
+    <section id="contact" class="py-24 border-t border-stone-900 bg-stone-950 relative">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+            <div class="space-y-8">
+                <div class="space-y-4">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-{{ theme_color }}-500">Join Us</span>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-white">Reserve A Table</h2>
+                    <p class="text-stone-400">Planning a dinner, celebration, or business meeting? Fill out our secure form, and we'll save you a spot at our table.</p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-stone-900 border border-stone-850 flex items-center justify-center text-{{ theme_color }}-400 shrink-0">
+                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-stone-400 uppercase tracking-wider">Address</h4>
+                            <p class="text-white">{{ contact.address }}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-stone-900 border border-stone-850 flex items-center justify-center text-{{ theme_color }}-400 shrink-0">
+                            <i data-lucide="phone" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-stone-400 uppercase tracking-wider">Phone</h4>
+                            <p class="text-white">{{ contact.phone }}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-stone-900 border border-stone-850 flex items-center justify-center text-{{ theme_color }}-400 shrink-0">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-stone-400 uppercase tracking-wider">Email</h4>
+                            <p class="text-white">{{ contact.email }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="p-8 md:p-10 rounded-3xl bg-stone-900/40 border border-stone-800 backdrop-blur-sm">
+                <form class="space-y-6" onsubmit="event.preventDefault(); alert('Reservation submitted successfully! We will contact you shortly.');">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <label class="text-xs font-semibold text-stone-400 uppercase tracking-wider">Name</label>
+                            <input type="text" placeholder="John Doe" class="w-full bg-stone-950 border border-stone-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-{{ theme_color }}-500 transition-colors">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs font-semibold text-stone-400 uppercase tracking-wider">Guests</label>
+                            <select class="w-full bg-stone-950 border border-stone-800 rounded-xl px-4 py-3 text-sm text-stone-400 focus:outline-none focus:border-{{ theme_color }}-500 transition-colors">
+                                <option>2 People</option>
+                                <option>4 People</option>
+                                <option>6+ People</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs font-semibold text-stone-400 uppercase tracking-wider">Date & Time</label>
+                        <input type="datetime-local" class="w-full bg-stone-950 border border-stone-800 rounded-xl px-4 py-3 text-sm text-stone-400 focus:outline-none focus:border-{{ theme_color }}-500 transition-colors">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs font-semibold text-stone-400 uppercase tracking-wider">Special Requests</label>
+                        <textarea placeholder="Allergies, seating preferences, etc..." rows="3" class="w-full bg-stone-950 border border-stone-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-{{ theme_color }}-500 transition-colors"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-{{ theme_color }}-600 hover:bg-{{ theme_color }}-700 text-white font-semibold py-4 rounded-xl transition-all duration-300 shadow-lg shadow-{{ theme_color }}-600/20">
+                        Confirm Reservation
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-stone-900 bg-stone-950 text-center text-stone-600 text-xs">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-2">
+                <i data-lucide="utensils-cross" class="w-4 h-4 text-{{ theme_color }}-500"></i>
+                <span class="font-serif font-bold text-sm text-stone-400">{{ business_name }}</span>
+            </div>
+            <p>&copy; 2026 {{ business_name }}. Generated by WhatsApp AI Web Builder.</p>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

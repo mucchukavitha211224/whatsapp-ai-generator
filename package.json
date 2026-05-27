@@ -1,0 +1,21 @@
+{
+  "name": "whatsapp-ai-generator",
+  "version": "1.0.0",
+  "description": "An elegant, beginner-friendly, and highly modular MVP that transforms simple WhatsApp chat descriptions into premium, responsive single-page websites dynamically hosted on **Netlify**!",
+  "main": "whatsapp.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "puppeteer-core": "^25.0.4",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.34.7"
+  }
+}

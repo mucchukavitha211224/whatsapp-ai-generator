@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ business_name }} | {{ slogan | default("Welcome") }}</title>
+    <meta name="description" content="{{ brand_story | truncate(150) }}">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family={{ font_family | default('Outfit:wght@300;400;600;700;800') }}&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            primary: '{{ colors.primary | default("#4f46e5") }}',
+                            secondary: '{{ colors.secondary | default("#9333ea") }}',
+                            accent: '{{ colors.accent | default("#f43f5e") }}',
+                            dark: '{{ colors.dark | default("#0f172a") }}',
+                            light: '{{ colors.light | default("#f8fafc") }}',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['{{ font_family | default("Outfit") }}', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .glass-dark {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-brand-light text-brand-dark antialiased selection:bg-brand-primary selection:text-white">
+
+    <!-- Header / Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 glass border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#hero" class="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent hover:opacity-90 transition">
+                        {{ business_name }}
+                    </a>
+                </div>
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-8 text-sm font-semibold">
+                    {% if "features" in sections %}
+                    <a href="#features" class="text-slate-600 hover:text-brand-primary transition">Features</a>
+                    {% endif %}
+                    {% if "services" in sections %}
+                    <a href="#services" class="text-slate-600 hover:text-brand-primary transition">
+                        {% if type == "restaurant" %}Menu{% else %}Services{% endif %}
+                    </a>
+                    {% endif %}
+                    {% if "about" in sections %}
+                    <a href="#about" class="text-slate-600 hover:text-brand-primary transition">About</a>
+                    {% endif %}
+                    {% if "testimonials" in sections %}
+                    <a href="#testimonials" class="text-slate-600 hover:text-brand-primary transition">Testimonials</a>
+                    {% endif %}
+                    {% if "contact" in sections %}
+                    <a href="#contact" class="text-slate-600 hover:text-brand-primary transition">Contact</a>
+                    {% endif %}
+                </nav>
+                <!-- Call to Action -->
+                <div class="hidden md:flex items-center">
+                    <a href="#contact" class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-bold rounded-full text-white bg-gradient-to-r from-brand-primary to-brand-secondary shadow-lg hover:shadow-brand-primary/20 hover:scale-105 transition transform duration-200">
+                        Get in Touch
+                    </a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-slate-600 hover:text-brand-primary hover:bg-slate-100 focus:outline-none transition">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-6 space-y-2 bg-white/95 border-b border-slate-100">
+            {% if "features" in sections %}
+            <a href="#features" class="block px-3 py-2.5 rounded-md text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-primary transition">Features</a>
+            {% endif %}
+            {% if "services" in sections %}
+            <a href="#services" class="block px-3 py-2.5 rounded-md text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-primary transition">
+                {% if type == "restaurant" %}Menu{% else %}Services{% endif %}
+            </a>
+            {% endif %}
+            {% if "about" in sections %}
+            <a href="#about" class="block px-3 py-2.5 rounded-md text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-primary transition">About</a>
+            {% endif %}
+            {% if "testimonials" in sections %}
+            <a href="#testimonials" class="block px-3 py-2.5 rounded-md text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-primary transition">Testimonials</a>
+            {% endif %}
+            {% if "contact" in sections %}
+            <a href="#contact" class="block px-3 py-2.5 rounded-md text-base font-semibold text-slate-700 hover:bg-slate-50 hover:text-brand-primary transition">Contact</a>
+            {% endif %}
+            <a href="#contact" class="block text-center mt-4 px-4 py-3 rounded-full text-white bg-gradient-to-r from-brand-primary to-brand-secondary font-bold shadow-lg">
+                Get in Touch
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-32 pb-24 md:pt-48 md:pb-36 overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(147,51,234,0.08),transparent_50%)]"></div>
+        <div class="absolute -top-40 -left-40 w-80 h-80 bg-brand-primary/10 rounded-full blur-3xl"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Hero Content -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    {% if slogan %}
+                    <span class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-bold bg-brand-primary/10 text-brand-primary border border-brand-primary/20 tracking-wider uppercase">
+                        {{ slogan }}
+                    </span>
+                    {% endif %}
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-brand-dark leading-none">
+                        {{ hero_title | default("Transforming Ideas Into Reality") }}
+                    </h1>
+                    <p class="text-lg sm:text-xl text-slate-600 font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        {{ hero_subtitle | default("Elevate your business presence with our fully automated premium digital solutions.") }}
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full font-extrabold text-white bg-brand-primary shadow-lg shadow-brand-primary/25 hover:bg-brand-primary/95 hover:scale-[1.02] active:scale-[0.98] transition duration-200">
+                            Book an Appointment
+                        </a>
+                        <a href="#services" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-full font-extrabold text-slate-700 bg-white border border-slate-200 shadow-sm hover:bg-slate-50 hover:scale-[1.02] active:scale-[0.98] transition duration-200">
+                            Explore More
+                        </a>
+                    </div>
+                </div>
+                <!-- Hero Image -->
+                <div class="lg:col-span-5 relative">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-primary to-brand-secondary rounded-3xl rotate-3 scale-102 opacity-10 blur-lg"></div>
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-white/50 aspect-video lg:aspect-square">
+                        <img src="{{ hero_image | default('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80') }}" 
+                             alt="{{ business_name }}" 
+                             class="w-full h-full object-cover transform hover:scale-105 transition duration-700">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    {% if "features" in sections %}
+    <section id="features" class="py-20 md:py-28 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-brand-dark">Why Choose Us?</h2>
+                <p class="text-lg text-slate-500">We stand out from the crowd with our specialized services and uncompromised quality.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {% for feature in features | default([
+                    {"title": "Premium Quality", "desc": "Crafted with detailed engineering to meet modern standards.", "icon": "fa-gem"},
+                    {"title": "Expert Team", "desc": "Our staff are certified industry experts dedicated to your success.", "icon": "fa-user-tie"},
+                    {"title": "24/7 Support", "desc": "Always here to guide and assist you whenever you need us.", "icon": "fa-headset"}
+                ]) %}
+                <div class="p-8 rounded-2xl bg-brand-light border border-slate-100 hover:border-brand-primary/20 shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-brand-primary/10 text-brand-primary flex items-center justify-center text-xl mb-6 group-hover:bg-brand-primary group-hover:text-white transition duration-300">
+                        <i class="fa-solid {{ feature.icon }}"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-3">{{ feature.title }}</h3>
+                    <p class="text-slate-500 leading-relaxed">{{ feature.desc }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Services / Products Section -->
+    {% if "services" in sections %}
+    <section id="services" class="py-20 md:py-28 bg-brand-light relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-brand-dark">
+                    {% if type == "restaurant" %}Our Delicious Menu{% else %}Our Specialized Services{% endif %}
+                </h2>
+                <p class="text-lg text-slate-500">
+                    {% if type == "restaurant" %}Explore our curated range of delicacies prepared fresh daily.{% else %}High-impact solutions tailored to accelerate your business growth.{% endif %}
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for service in services %}
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-brand-primary/20 shadow-md hover:shadow-2xl transition duration-300 flex flex-col">
+                    {% if service.image %}
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="{{ service.image }}" alt="{{ service.title }}" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                    </div>
+                    {% endif %}
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="text-lg font-bold text-brand-dark">{{ service.title }}</h3>
+                                {% if service.price %}
+                                <span class="text-brand-primary font-extrabold text-lg">{{ service.price }}</span>
+                                {% endif %}
+                            </div>
+                            <p class="text-sm text-slate-500 leading-relaxed">{{ service.description }}</p>
+                        </div>
+                        {% if service.icon %}
+                        <div class="mt-6 flex items-center justify-between text-xs font-semibold text-slate-400">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-800">
+                                <i class="fa-solid {{ service.icon }} mr-1 text-brand-primary"></i> Popular
+                            </span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- About Section -->
+    {% if "about" in sections %}
+    <section id="about" class="py-20 md:py-28 bg-white overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Image Side -->
+                <div class="lg:col-span-5 relative">
+                    <div class="absolute inset-0 bg-brand-primary/10 rounded-3xl -rotate-3 scale-102"></div>
+                    <div class="relative rounded-3xl overflow-hidden shadow-xl aspect-video lg:aspect-square">
+                        <img src="{{ about_image | default('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80') }}" 
+                             alt="About us" 
+                             class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <!-- Content Side -->
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="text-brand-primary font-extrabold tracking-wider uppercase text-sm">Our Story</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark">Crafting Experiences with Passion</h2>
+                    <div class="text-slate-600 space-y-4 leading-relaxed font-normal">
+                        <p>{{ brand_story }}</p>
+                    </div>
+                    {% if brand_values %}
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        {% for value in brand_values %}
+                        <div class="flex items-start space-x-3">
+                            <div class="mt-1 bg-brand-primary/10 text-brand-primary rounded-full p-1 text-xs">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-brand-dark">{{ value.title }}</h4>
+                                <p class="text-xs text-slate-500">{{ value.desc }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Testimonials Section -->
+    {% if "testimonials" in sections %}
+    <section id="testimonials" class="py-20 md:py-28 bg-brand-light relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-brand-dark">What Our Clients Say</h2>
+                <p class="text-lg text-slate-500">Real feedback from clients who trust us with their businesses.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {% for review in testimonials | default([
+                    {"name": "Sarah Jenkins", "role": "CEO, EcoLife", "text": "Outstanding work! The turnaround time and eye for design completely blew us away.", "rating": 5},
+                    {"name": "David Chen", "role": "Owner, Baker Street", "text": "Highly responsive and very professional. The menu layouts were exactly what I needed.", "rating": 5},
+                    {"name": "Michael Roberts", "role": "Freelancer", "text": "My new portfolio page is clean, loaded fast, and has already helped me sign two new clients.", "rating": 5}
+                ]) %}
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-6 text-sm">
+                            {% for i in range(review.rating | default(5)) %}
+                            <i class="fa-solid fa-star"></i>
+                            {% endfor %}
+                        </div>
+                        <p class="text-slate-600 italic leading-relaxed mb-6">"{{ review.text }}"</p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-6 border-t border-slate-50">
+                        <div class="w-10 h-10 rounded-full bg-brand-primary/10 text-brand-primary flex items-center justify-center font-bold text-sm">
+                            {{ review.name[0] }}
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-brand-dark">{{ review.name }}</h4>
+                            <p class="text-xs text-slate-400">{{ review.role }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Contact Section -->
+    {% if "contact" in sections %}
+    <section id="contact" class="py-20 md:py-28 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Info Column -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <h2 class="text-3xl font-extrabold tracking-tight text-brand-dark mb-4">Let's Connect</h2>
+                        <p class="text-slate-500">Have questions or want to collaborate? Get in touch and let's build something remarkable.</p>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        {% if contact.phone %}
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-primary/10 text-brand-primary flex items-center justify-center">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-700 text-sm">Call Us</h4>
+                                <a href="tel:{{ contact.phone }}" class="text-slate-500 hover:text-brand-primary text-sm transition">{{ contact.phone }}</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        
+                        {% if contact.email %}
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-primary/10 text-brand-primary flex items-center justify-center">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-700 text-sm">Email Us</h4>
+                                <a href="mailto:{{ contact.email }}" class="text-slate-500 hover:text-brand-primary text-sm transition">{{ contact.email }}</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        
+                        {% if contact.address %}
+                        <div class="flex items-start space-x-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-primary/10 text-brand-primary flex items-center justify-center">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-700 text-sm">Visit Us</h4>
+                                <p class="text-slate-500 text-sm">{{ contact.address }}</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <!-- Form Column -->
+                <div class="lg:col-span-7">
+                    <div class="bg-brand-light p-8 sm:p-10 rounded-3xl border border-slate-100 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-brand-primary/5 rounded-full blur-xl"></div>
+                        <form id="contact-form" class="space-y-6" onsubmit="handleFormSubmit(event)">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Your Name</label>
+                                    <input type="text" id="name" required class="w-full px-4 py-3.5 bg-white border border-slate-200 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/10 rounded-xl outline-none text-sm transition">
+                                </div>
+                                <div>
+                                    <label for="form_email" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Email Address</label>
+                                    <input type="email" id="form_email" required class="w-full px-4 py-3.5 bg-white border border-slate-200 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/10 rounded-xl outline-none text-sm transition">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Subject</label>
+                                <input type="text" id="subject" required class="w-full px-4 py-3.5 bg-white border border-slate-200 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/10 rounded-xl outline-none text-sm transition">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Message</label>
+                                <textarea id="message" rows="5" required class="w-full px-4 py-3.5 bg-white border border-slate-200 focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/10 rounded-xl outline-none text-sm transition resize-none"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full py-4 bg-brand-primary text-white font-extrabold rounded-xl shadow-lg shadow-brand-primary/20 hover:bg-brand-primary/95 hover:scale-[1.01] active:scale-[0.99] transition duration-200">
+                                Send Message
+                            </button>
+                        </form>
+                        
+                        <!-- Success Message -->
+                        <div id="form-success" class="hidden text-center py-12 space-y-4 animate-fade-in">
+                            <div class="w-16 h-16 bg-emerald-100 text-emerald-500 rounded-full flex items-center justify-center text-3xl mx-auto shadow-sm">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-brand-dark">Message Sent Successfully!</h3>
+                            <p class="text-slate-500 text-sm max-w-sm mx-auto">Thank you for reaching out. We have received your inquiry and will contact you within 24 hours.</p>
+                            <button onclick="resetForm()" class="mt-4 px-6 py-2 border border-slate-200 hover:bg-slate-50 text-slate-500 font-semibold rounded-xl text-xs transition">
+                                Send Another Message
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-slate-400 py-16 border-t border-slate-800 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <!-- Branding -->
+                <div class="md:col-span-2 space-y-4">
+                    <span class="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
+                        {{ business_name }}
+                    </span>
+                    <p class="text-sm text-slate-400 leading-relaxed max-w-sm">{{ slogan | default("High performance custom websites tailored for modern businesses.") }}</p>
+                </div>
+                <!-- Links -->
+                <div class="space-y-4">
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider">Quick Navigation</h4>
+                    <div class="flex flex-col space-y-2 text-sm">
+                        {% if "features" in sections %}<a href="#features" class="hover:text-white transition">Features</a>{% endif %}
+                        {% if "services" in sections %}<a href="#services" class="hover:text-white transition">{% if type == "restaurant" %}Menu{% else %}Services{% endif %}</a>{% endif %}
+                        {% if "about" in sections %}<a href="#about" class="hover:text-white transition">About</a>{% endif %}
+                        {% if "testimonials" in sections %}<a href="#testimonials" class="hover:text-white transition">Testimonials</a>{% endif %}
+                        {% if "contact" in sections %}<a href="#contact" class="hover:text-white transition">Contact</a>{% endif %}
+                    </div>
+                </div>
+                <!-- Contact info -->
+                <div class="space-y-4">
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider">Keep in Touch</h4>
+                    <div class="flex space-x-4 text-lg">
+                        {% for social in social_links | default([{"icon": "fa-twitter", "url": "#"}, {"icon": "fa-instagram", "url": "#"}, {"icon": "fa-linkedin", "url": "#"}]) %}
+                        <a href="{{ social.url }}" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-400 flex items-center justify-center hover:bg-brand-primary hover:text-white transition duration-300">
+                            <i class="fa-brands {{ social.icon }}"></i>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>&copy; 2026 {{ business_name }}. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Sticky Header scroll styling
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg', 'bg-white/95');
+                header.classList.remove('bg-white/70');
+            } else {
+                header.classList.remove('shadow-lg', 'bg-white/95');
+                header.classList.add('bg-white/70');
+            }
+        });
+
+        // Mobile Menu toggler
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.className = 'fa-solid fa-bars text-xl';
+            } else {
+                icon.className = 'fa-solid fa-xmark text-xl';
+            }
+        });
+
+        // Close mobile nav on click
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileBtn.querySelector('i').className = 'fa-solid fa-bars text-xl';
+            });
+        });
+
+        // Interactive Form Submission Handlers
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('contact-form');
+            const successDiv = document.getElementById('form-success');
+            
+            // Visual loading state
+            const button = form.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            button.disabled = true;
+            button.innerHTML = '<i class="fa-solid fa-circle-notch animate-spin mr-2"></i> Sending...';
+            
+            setTimeout(() => {
+                form.classList.add('hidden');
+                successDiv.classList.remove('hidden');
+                button.disabled = false;
+                button.innerHTML = originalText;
+            }, 1000);
+        }
+
+        function resetForm() {
+            const form = document.getElementById('contact-form');
+            const successDiv = document.getElementById('form-success');
+            
+            form.reset();
+            successDiv.classList.add('hidden');
+            form.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

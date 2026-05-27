@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bakery Called - Crafting Exquisite Culinary Journeys</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: 'hsl(var(--primary-color))',
+            'primary-hover': 'hsl(var(--primary-hover))',
+            secondary: 'hsl(var(--secondary-color))'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap");
+    :root {
+      --primary-color: 220 90% 56%;
+      --primary-hover: 220 90% 46%;
+      --primary-rgb: 59, 130, 246;
+      --secondary-color: 220 15% 10%;
+    }
+    body { font-family: "Plus Jakarta Sans", sans-serif; }
+    h1, h2, h3, h4, h5, h6 { font-family: "Playfair Display", Georgia, serif; }
+    
+  </style>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 scroll-smooth antialiased">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="text-2xl font-extrabold flex items-center gap-2">
+        <span class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white text-base">
+          <i data-lucide="layers" class="w-4 h-4"></i>
+        </span>
+        Bakery Called
+      </a>
+      <div class="hidden md:flex items-center gap-8 font-semibold">
+        <a href="#about" class="hover:text-primary transition-colors text-sm opacity-80">About</a>
+        <a href="#services" class="hover:text-primary transition-colors text-sm opacity-80">Services</a>
+        <a href="#gallery" class="hover:text-primary transition-colors text-sm opacity-80">Gallery</a>
+        <a href="#contact" class="hover:text-primary transition-colors text-sm opacity-80">Contact</a>
+      </div>
+      <div>
+        <a href="#contact" class="bg-primary text-white hover:bg-primary-hover shadow-lg hover:shadow-primary/30 transition-all hover:scale-105 px-6 py-3 rounded-full font-semibold text-sm">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="relative pt-36 pb-24 overflow-hidden min-h-screen flex items-center">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+      <div>
+        <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold mb-6 tracking-wide uppercase">
+          AI Generated Experience
+        </span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+          Welcome to Bakery Called
+        </h1>
+        <p class="text-lg opacity-85 leading-relaxed mb-8 max-w-xl">
+          Savor organic, local ingredients cooked with passion and served with love.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center gap-4">
+          <a href="#contact" class="bg-primary text-white hover:bg-primary-hover shadow-lg hover:shadow-primary/30 transition-all hover:scale-105 px-6 py-3 rounded-full font-semibold">View Menu & Reserve</a>
+          <a href="#services" class="px-6 py-3 rounded-full font-semibold border border-current opacity-70 hover:opacity-100 flex items-center justify-center gap-2">
+            Learn More <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="relative overflow-hidden rounded-2xl shadow-2xl">
+          <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=80" alt="Hero" class="w-full aspect-[4/3] object-cover" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="py-24 border-t border-slate-100 dark:border-slate-900/50">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+      <div class="order-2 md:order-1">
+        <div class="relative overflow-hidden rounded-2xl shadow-xl">
+          <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=800&q=80" alt="About" class="w-full h-[450px] object-cover" />
+        </div>
+      </div>
+      <div class="order-1 md:order-2">
+        <span class="text-primary font-bold tracking-wider uppercase text-sm block mb-3">Our Story & Philosophy</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-6">Who We Are & What We Believe</h2>
+        <p class="text-lg leading-relaxed opacity-80 mb-8">At Bakery Called, we believe that food is a celebration of life. Founded by passionate chefs, our culinary crew curates delightful flavors with clean, locally sourced produce.</p>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+            <i data-lucide="check" class="w-3.5 h-3.5"></i>
+          </span>
+          <span class="font-medium text-sm leading-snug">100% Fresh Daily</span>
+        </li>
+        
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+            <i data-lucide="check" class="w-3.5 h-3.5"></i>
+          </span>
+          <span class="font-medium text-sm leading-snug">Locally Sourced Organic</span>
+        </li>
+        
+        <li class="flex items-start gap-3">
+          <span class="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+            <i data-lucide="check" class="w-3.5 h-3.5"></i>
+          </span>
+          <span class="font-medium text-sm leading-snug">Extensive Wine Selection</span>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="py-24 bg-slate-100/50 dark:bg-slate-900/20 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-primary font-bold tracking-wider uppercase text-sm block mb-3">Our Offerings</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Handcrafted Selections</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white border border-slate-100 shadow-sm rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+          <div class="flex items-center justify-between mb-4">
+            <div class="p-3 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+              <i data-lucide="utensils" class="w-6 h-6"></i>
+            </div>
+            <span class="font-bold text-lg text-primary">$26</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Truffle Tagliatelle</h3>
+          <p class="text-sm leading-relaxed opacity-75">Handcrafted pasta tossed in white truffle butter, wild mushrooms.</p>
+        </div>
+        
+        <div class="bg-white border border-slate-100 shadow-sm rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+          <div class="flex items-center justify-between mb-4">
+            <div class="p-3 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+              <i data-lucide="fish" class="w-6 h-6"></i>
+            </div>
+            <span class="font-bold text-lg text-primary">$19</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Smoked Salmon Carpaccio</h3>
+          <p class="text-sm leading-relaxed opacity-75">Thinly sliced cold-smoked salmon, capers, pickled red onions.</p>
+        </div>
+        
+        <div class="bg-white border border-slate-100 shadow-sm rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+          <div class="flex items-center justify-between mb-4">
+            <div class="p-3 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+              <i data-lucide="cake" class="w-6 h-6"></i>
+            </div>
+            <span class="font-bold text-lg text-primary">$12</span>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Signature Lava Cake</h3>
+          <p class="text-sm leading-relaxed opacity-75">Warm dark chocolate cake with a molten center, vanilla gelato.</p>
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="py-24 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-primary font-bold tracking-wider uppercase text-sm block mb-3">Portfolio</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Visual Aesthetics</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="overflow-hidden group rounded-xl relative ">
+          <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=80" alt="Item 0" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+            <p class="text-white font-medium capitalize text-sm flex items-center gap-2">
+              <i data-lucide="eye" class="w-4 h-4"></i> View Photo
+            </p>
+          </div>
+        </div>
+        
+        <div class="overflow-hidden group rounded-xl relative ">
+          <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=800&q=80" alt="Item 1" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+            <p class="text-white font-medium capitalize text-sm flex items-center gap-2">
+              <i data-lucide="eye" class="w-4 h-4"></i> View Photo
+            </p>
+          </div>
+        </div>
+        
+        <div class="overflow-hidden group rounded-xl relative ">
+          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Item 2" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+            <p class="text-white font-medium capitalize text-sm flex items-center gap-2">
+              <i data-lucide="eye" class="w-4 h-4"></i> View Photo
+            </p>
+          </div>
+        </div>
+        
+        <div class="overflow-hidden group rounded-xl relative ">
+          <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80" alt="Item 3" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+            <p class="text-white font-medium capitalize text-sm flex items-center gap-2">
+              <i data-lucide="eye" class="w-4 h-4"></i> View Photo
+            </p>
+          </div>
+        </div>
+        
+        <div class="overflow-hidden group rounded-xl relative ">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80" alt="Item 4" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+            <p class="text-white font-medium capitalize text-sm flex items-center gap-2">
+              <i data-lucide="eye" class="w-4 h-4"></i> View Photo
+            </p>
+          </div>
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-24 bg-slate-100/50 dark:bg-slate-900/20 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+      <div>
+        <span class="text-primary font-bold tracking-wider uppercase text-sm block mb-3">Connect With Us</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-6">Get in Touch Today</h2>
+        <div class="space-y-6">
+          <div class="flex items-center gap-4">
+            <span class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center"><i data-lucide="mail"></i></span>
+            <div>
+              <p class="text-xs uppercase opacity-60">Email Us</p>
+              <a href="mailto:hello@bakerycalled.com" class="font-bold">hello@bakerycalled.com</a>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center"><i data-lucide="phone"></i></span>
+            <div>
+              <p class="text-xs uppercase opacity-60">Call Support</p>
+              <a href="tel:+1 (555) 321-9876" class="font-bold">+1 (555) 321-9876</a>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center"><i data-lucide="map-pin"></i></span>
+            <div>
+              <p class="text-xs uppercase opacity-60">Visit Us</p>
+              <p class="font-bold">742 Evergreen Terrace, Foodie District, NY 10001</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white border border-slate-100 shadow-sm rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+        <h3 class="text-2xl font-bold mb-6">Send Message</h3>
+        <form onsubmit="event.preventDefault(); alert('Message successfully transmitted!')" class="space-y-4">
+          <input type="text" placeholder="Full Name" required class="w-full bg-slate-50 dark:bg-slate-900 border rounded-lg px-4 py-2 text-sm outline-none" />
+          <input type="email" placeholder="Email Address" required class="w-full bg-slate-50 dark:bg-slate-900 border rounded-lg px-4 py-2 text-sm outline-none" />
+          <textarea placeholder="Your Message" required rows="4" class="w-full bg-slate-50 dark:bg-slate-900 border rounded-lg px-4 py-2 text-sm outline-none"></textarea>
+          <button type="submit" class="w-full bg-primary text-white hover:bg-primary-hover shadow-lg hover:shadow-primary/30 transition-all hover:scale-105 px-6 py-3 rounded-full font-semibold">Submit Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-12 border-t border-slate-100 dark:border-slate-900/50 text-center text-sm opacity-75">
+    <p>&copy; 2026 Bakery Called. Powered by ElevateBox.</p>
+  </footer>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
