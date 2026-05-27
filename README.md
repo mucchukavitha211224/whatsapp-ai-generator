@@ -268,12 +268,11 @@ Sends live URL
 
 
 # 🎥 Demo Video
-
 # 🎥 Demo Video
 
-## ▶️ Watch Full Project Demo
+## ▶️ Demo Video Link
 
-[🚀 Click Here To Watch Demo Video](https://1drv.ms/v/c/30cc374d43cb4b11/IQAzQNEOrgG7R7uyJjOufTM1ASWeARtAtSvRl0qW3UTRISg?e=iYcxya)
+🔗 https://1drv.ms/v/c/30cc374d43cb4b11/IQAzQNEOrgG7R7uyJjOufTM1ASWeARtAtSvRl0qW3UTRISg?e=iYcxya
 ⚠️ Challenges Faced
 
 ❌ WhatsApp Session Errors
