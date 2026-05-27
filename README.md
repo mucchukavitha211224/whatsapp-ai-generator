@@ -266,9 +266,9 @@ Sends live URL
 # 🎥 Demo Video
 
 ## Demo Video
+## Demo Video
 
-Watch Project Demo:
-https://1drv.ms/v/c/30cc374d43cb4b11/IQAzQNEOrgG7R7uyJjOufTM1AexueY5BINWXYIJ5NadScNo?e=LPJJXd
+[Watch Project Demo Video](https://1drv.ms/v/c/30cc374d43cb4b11/IQAzQNEOrgG7R7uyJjOufTM1AexueY5BINWXYIJ5NadScNo?e=LPJJXd)
 
 
 
