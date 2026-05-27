@@ -270,10 +270,11 @@ Sends live URL
 # 🎥 Demo Video
 # 🎥 Demo Video
 
-## ▶️ Demo Video Link
+## Demo Video
 
-🔗 https://1drv.ms/v/c/30cc374d43cb4b11/IQAzQNEOrgG7R7uyJjOufTM1ASWeARtAtSvRl0qW3UTRISg?e=iYcxya
-⚠️ Challenges Faced
+Demo Link:
+https://1drv.ms/v/c/30cc374d43cb4b11/IQAzQNEOrgG7R7uyJjOufTM1ASWeARtAtSvRl0qW3UTRISg?e=iYcxya
+
 
 ❌ WhatsApp Session Errors
 ❌ Puppeteer Browser Issues
