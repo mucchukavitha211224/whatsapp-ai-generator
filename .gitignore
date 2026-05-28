@@ -4,4 +4,4 @@ deployed_sites*/
 *.log
 outputs/
 deployed_sites/
-node_modules/
+*.html
