@@ -2,3 +2,6 @@ node_modules/
 deployed_sites*/
 .env
 *.log
+outputs/
+deployed_sites/
+node_modules/
