@@ -1,79 +1,229 @@
-# 🏗️ System Architecture & Design
+# 🏗️ AI WhatsApp Website Generator Architecture Documentation
 
-This document details the high-level system architecture, information data flows, and design patterns implemented in the **WhatsApp AI Website Generator & Simulator**.
+## 📌 Overview
+
+AI WhatsApp Website Generator is an automation-based system that creates responsive websites through WhatsApp text messages and audio commands. The project integrates WhatsApp automation, AI-based website generation, multilingual processing, responsive frontend design, and deployment concepts.
+
+The system automatically detects user requests, generates dynamic HTML websites, and deploys them online while sending the live URL back to the user through WhatsApp.
 
 ---
 
-## 📈 System Flow & Architecture
+# 🏛️ System Architecture
 
-The system coordinates modular services in an asynchronous pipeline to deliver high-quality web pages rapidly. Below is a structural design diagram:
-
-```mermaid
-flowchart TD
-    %% Entrypoints
-    A[WhatsApp Mobile Sandbox] -->|HTTP POST Webhook| B[Express Web Controller]
-    C[Web Simulator Dashboard] -->|HTTP POST Request| B
-    
-    %% Express core routing
-    B -->|1. Route Prompt| D[AI Parser Service]
-    B -->|2. Register Live Stream| E[SSE Event Broker]
-    
-    %% AI Processing
-    D -->|Request JSON Schema| F{Gemini API / Fallback Rules}
-    F -->|Raw Prompt JSON| G[Dynamic Design Tokens]
-    
-    %% HTML Compilation
-    G -->|3. Compile Assets| H[Web Compiler Engine]
-    H -->|Inject HSL Variables| I[Modular Static Assets]
-    H -->|Curate Photos| I
-    H -->|Generate Copywriting| I
-    
-    %% Deployment Pipeline
-    I -->|4. Push Files| J[Deployer Dispatcher]
-    J -->|Local Preview| K[Local Host Web Server]
-    J -->|Live Deployment| L[Netlify ZIP API]
-    
-    %% Live updates
-    K & L -->|5. Return URL & Status| M[Express Core]
-    M -->|Push SSE Stream Log| E
-    E -->|6. Render IFrame / logs| C
-    M -->|Send Message| N[Twilio WhatsApp Dispatcher]
-    N -->|7. Text live URL| A
+```bash id="j4n8rt"
+User
+ │
+ │ WhatsApp Message / Audio
+ ▼
+WhatsApp Bot (whatsapp-web.js)
+ │
+ ▼
+Node.js Backend
+ │
+ ├── Language Detection
+ ├── Website Type Detection
+ ├── Audio Processing
+ ├── HTML Generation
+ └── Error Handling
+ │
+ ▼
+Website Generator Engine
+ │
+ ├── Hero Section
+ ├── About Us
+ ├── Services
+ ├── Gallery
+ ├── Contact Form
+ └── Footer
+ │
+ ▼
+Generated HTML Files
+ │
+ ▼
+Netlify Deployment
+ │
+ ▼
+Live Website URL
+ │
+ ▼
+Response Sent Back To User
 ```
 
 ---
 
-## 🧩 Architectural Component Details
+# ⚙️ Components Description
 
-### 1. **Web Entrypoint Router (`src/index.js`)**
-- Serves as the central command node.
-- Hosts static routers for the HTML/CSS/JS web dashboard, and exposes paths to locally hosted compiled websites under `/sites/:siteId`.
-- Establishes a **Server-Sent Events (SSE)** endpoint (`/api/logs`) which allows client browsers to hook into the backend. During site generation, the controller broadcasts progression steps instantly, enabling rich, real-time scrolling logs without heavy WebSocket handshakes or REST polling.
+## 1️⃣ User Layer
 
-### 2. **AI Requirement Understander (`src/ai/llm.js`)**
-- Connects to Google GenAI and instantiates `gemini-1.5-flash` with a strict `responseMimeType: 'application/json'` configuration constraint.
-- The system prompt specifies a rigorous template layout that parses the user's brief message and generates full marketing copy, features lists, color palettes, styles, and typography.
-- To prevent API failure blockages (such as missing keys, offline states, or quota exhausts), the service embeds a state-of-the-art **Regex parser fallback**. This fallback dynamically extracts business names, visual types, and theme settings to guarantee a seamless developer experience out of the box.
+The user interacts with the system using WhatsApp messages or audio commands.
 
-### 3. **Website Generation Engine (`src/generator/engine.js`)**
-- Receives the JSON design tokens from the AI service.
-- Features four premium pre-coded **Visual Styles** (`modern`, `glassmorphism`, `brutalist`, and `neon`) built with highly modular semantic HTML, Lucide icon libraries, and custom HSL typography bindings.
-- Coordinates theme setups (e.g. glassmorphic semi-transparent cards, cybernetic neon glows, thick brutalist borders) to craft high-fidelity responsive websites.
-- Curates a list of stunning, high-resolution, instant-loading Unsplash stock photos mapped directly to business categories to present an amazing visual output.
+Example Requests:
 
-### 4. **Automated Deployer (`src/deployment/deployer.js`)**
-- Acts as a unified distribution gateway.
-- Uses `archiver` to assemble compiled site files into a binary ZIP buffer.
-- Performs a direct multipart POST binary upload to Netlify's `/sites` endpoint, creating a secure, production-ready live hosted subdomain inside seconds.
-- Seamlessly falls back to local hosting if no Netlify token is configured, writing files directly to `deployed_sites/` and serving them instantly.
+* Create restaurant website
+* Create bakery website
+* Create fashion website
 
 ---
 
-## ⚖️ Technical Decision Justification
+## 2️⃣ WhatsApp Bot Layer
 
-### Why Node.js & Vanilla CSS/JS instead of Next.js?
-- **Speed of Execution & Zero Build Friction**: A Vite/React or Next.js project requires compilation, build, and high node dependency overhead which can easily cause environment mismatches on various OS configurations. Using a pure Express server serving a stunning vanilla CSS/JS dashboard is **bulletproof**, zero-compilation, and loads in milliseconds on any machine.
-- **Flawless Reproducibility**: The task mandates that reviewers must be able to run the code. By eliminating compilation steps and bundling fallback modules, our project executes seamlessly on any terminal running `npm install && npm start`.
+The WhatsApp bot is built using:
 
-### Why Server-Sent Events (SSE) instead of WebSockets?
-- **Lightweight & Native**: WebSockets require additional library wrapper protocols (like Socket.io) and custom client reconnection states. SSE is a simple, native browser standard (`EventSource`) that streams text down an open HTTP link, which is ideal for streaming sequential terminal build logs from backend to frontend.
+* whatsapp-web.js
+* Puppeteer
+
+Responsibilities:
+
+* Receive messages
+* Receive audio
+* Authenticate WhatsApp session
+* Send responses back to user
+
+---
+
+## 3️⃣ Backend Processing Layer
+
+The Node.js backend handles:
+
+### ✅ Language Detection
+
+Detects:
+
+* English
+* Telugu
+* Hindi
+* Tamil
+
+### ✅ Website Category Detection
+
+Detects:
+
+* Restaurant
+* Bakery
+* Fashion
+* Portfolio
+* Business
+
+### ✅ Audio Processing
+
+Processes voice commands and extracts user requests.
+
+### ✅ Error Handling
+
+Handles deployment failures and invalid messages.
+
+---
+
+## 4️⃣ Website Generator Engine
+
+This module dynamically generates responsive websites containing:
+
+* Hero Section
+* Navigation Bar
+* About Us
+* Services
+* Gallery
+* Contact Form
+* Footer
+
+The websites are generated using:
+
+* HTML
+* CSS
+* JavaScript
+
+---
+
+## 5️⃣ Deployment Layer
+
+Generated websites are deployed using Netlify hosting.
+
+Responsibilities:
+
+* Upload generated files
+* Create live URL
+* Return deployment response
+
+---
+
+## 6️⃣ Output Layer
+
+The system sends:
+
+* Website generated message
+* Live project URL
+* Deployment confirmation
+
+back to the WhatsApp user.
+
+---
+
+# 🔄 Workflow
+
+## Step 1
+
+User sends message or audio request.
+
+## Step 2
+
+WhatsApp bot receives request.
+
+## Step 3
+
+Backend processes language and website type.
+
+## Step 4
+
+HTML website is generated dynamically.
+
+## Step 5
+
+Website is deployed to Netlify.
+
+## Step 6
+
+Live URL is sent back to user.
+
+---
+
+# 🛠️ Technologies Used
+
+## Frontend
+
+* HTML5
+* CSS3
+* JavaScript
+
+## Backend
+
+* Node.js
+
+## Libraries
+
+* whatsapp-web.js
+* Puppeteer
+* qrcode-terminal
+
+## Hosting
+
+* Netlify
+
+---
+
+# ✨ Features
+
+* WhatsApp Automation
+* AI Website Generation
+* Audio Support
+* Multi-language Support
+* Responsive UI Design
+* Gallery Images
+* Contact Forms
+* Dynamic Website Templates
+* Automatic Deployment
+
+---
+
+# 📌 Conclusion
+
+The AI WhatsApp Website Generator successfully demonstrates automation, AI integration, frontend development, cloud deployment, and responsive website generation using modern technologies.
