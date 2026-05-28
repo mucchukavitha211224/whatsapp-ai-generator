@@ -2,7 +2,7 @@
   "name": "whatsapp-ai-generator",
   "version": "1.0.0",
   "description": "An elegant, beginner-friendly, and highly modular MVP that transforms simple WhatsApp chat descriptions into premium, responsive single-page websites dynamically hosted on **Netlify**!",
-  "main": "whatsapp.js",
+  "main": "src/whatsapp/whatsapp.js",
   "directories": {
     "doc": "docs"
   },
