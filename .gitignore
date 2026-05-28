@@ -1,4 +1,4 @@
-# Local Netlify folder
-.netlify
-
-.vercel
+node_modules/
+deployed_sites*/
+.env
+*.log
